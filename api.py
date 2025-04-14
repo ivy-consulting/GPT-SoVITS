@@ -655,10 +655,6 @@ def get_tts_wav(ref_wav_path, prompt_text, prompt_language, text, text_language,
         import logging
         logging.info(f"Requested speaker: {spk}, Available speakers: {speaker_list.keys()}")
     
-    logging.info(f"the spk is , {type(spk)}")
-    
-    import warnings
-    warnings.warn(f"the spk is {spk}")
     
     try:
         infer_sovits = speaker_list[spk].sovits
