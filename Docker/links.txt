@@ -11,9 +11,9 @@ https://huggingface.co/rinna/japanese-hubert-base/resolve/main/preprocessor_conf
   out=GPT_SoVITS/pretrained_models/chinese-hubert-base/preprocessor_config.json
 https://huggingface.co/rinna/japanese-hubert-base/resolve/main/pytorch_model.bin
   out=GPT_SoVITS/pretrained_models/japanese-hubert-base/pytorch_model.bin
-https://huggingface.co/tohoku-nlp/bert-base-japanese-whole-word-masking/resolve/main/config.json
-  out=GPT_SoVITS/pretrained_models/bert-base-japanese-whole-word-masking/config.json
-https://huggingface.co/tohoku-nlp/bert-base-japanese-whole-word-masking/resolve/main/pytorch_model.bin
-  out=GPT_SoVITS/pretrained_models/bert-base-japanese-whole-word-masking/pytorch_model.bin
-https://huggingface.co/tohoku-nlp/bert-base-japanese-whole-word-masking/resolve/main/tokenizer_config.json
-  out=GPT_SoVITS/pretrained_models/bert-base-japanese-whole-word-masking/tokenizer.json
+https://huggingface.co/nlp-waseda/roberta-large-japanese/resolve/main/config.json
+  out=GPT_SoVITS/pretrained_models/roberta-large-japanese/config.json
+https://huggingface.co/nlp-waseda/roberta-large-japanese/resolve/main/pytorch_model.bin
+  out=GPT_SoVITS/pretrained_modelsroberta-large-japanese/pytorch_model.bin
+https://huggingface.co/nlp-waseda/roberta-large-japanese/resolve/main/tokenizer_config.json
+  out=GPT_SoVITS/pretrained_models/roberta-large-japanese/tokenizer.json

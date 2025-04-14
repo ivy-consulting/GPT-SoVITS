@@ -13,7 +13,7 @@ is_share= True if is_share_str.lower() == 'true' else False
 cnhubert_path = "GPT_SoVITS/pretrained_models/japanese-hubert-base"
 # cnhubert_path="rinna/japanese-hubert-base"
 
-bert_path = "GPT_SoVITS/pretrained_models/bert-base-japanese-whole-word-masking"
+bert_path = "GPT_SoVITS/pretrained_models/roberta-large-japanese"
 # bert_path = "tohoku-nlp/bert-base-japanese-whole-word-masking"
 
 pretrained_sovits_path = "GPT_SoVITS/pretrained_models/s2G488k.pth"
