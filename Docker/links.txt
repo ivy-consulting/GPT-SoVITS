@@ -14,6 +14,6 @@ https://huggingface.co/rinna/japanese-hubert-base/resolve/main/pytorch_model.bin
 https://huggingface.co/nlp-waseda/roberta-large-japanese/resolve/main/config.json
   out=GPT_SoVITS/pretrained_models/roberta-large-japanese/config.json
 https://huggingface.co/nlp-waseda/roberta-large-japanese/resolve/main/pytorch_model.bin
-  out=GPT_SoVITS/pretrained_modelsroberta-large-japanese/pytorch_model.bin
+  out=GPT_SoVITS/pretrained_models/roberta-large-japanese/pytorch_model.bin
 https://huggingface.co/nlp-waseda/roberta-large-japanese/resolve/main/tokenizer_config.json
   out=GPT_SoVITS/pretrained_models/roberta-large-japanese/tokenizer.json
