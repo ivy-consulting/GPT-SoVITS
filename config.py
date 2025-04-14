@@ -10,8 +10,8 @@ is_half = True if is_half_str.lower() == 'true' else False
 is_share_str = os.environ.get("is_share","False")
 is_share= True if is_share_str.lower() == 'true' else False
 
-cnhubert_path = "GPT_SoVITS/pretrained_models/chinese-hubert-base"
-bert_path = "GPT_SoVITS/pretrained_models/chinese-roberta-wwm-ext-large"
+cnhubert_path = "GPT_SoVITS/pretrained_models/japanese-hubert-base"
+bert_path = "GPT_SoVITS/pretrained_models/roberta-large-japanese"
 pretrained_sovits_path = "GPT_SoVITS/pretrained_models/s2G488k.pth"
 pretrained_gpt_path = "GPT_SoVITS/pretrained_models/s1bert25hz-2kh-longer-epoch=68e-step=50232.ckpt"
 
