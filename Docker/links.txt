@@ -36,3 +36,19 @@ https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/uvr5_weights/VR-
   out=tools/uvr5/uvr5_weights/VR-DeEchoNormal.pth
 https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/uvr5_weights/onnx_dereverb_By_FoxJoy/vocals.onnx
   out=tools/uvr5/uvr5_weights/onnx_dereverb_By_FoxJoy/vocals.onnx
+
+#ASR 
+https://huggingface.co/Systran/faster-whisper-large-v3/resolve/main/model.bin
+  out=tools/asr/models/model.bin
+
+https://huggingface.co/Systran/faster-whisper-large-v3/resolve/main/config.json
+  out=tools/asr/models/config.json
+
+https://huggingface.co/Systran/faster-whisper-large-v3/resolve/main/preprocessor_config.json
+  out=tools/asr/models/preprocessor_config.json
+
+https://huggingface.co/Systran/faster-whisper-large-v3/resolve/main/tokenizer.json
+  out=tools/asr/models/tokenizer.json
+
+https://huggingface.co/Systran/faster-whisper-large-v3/blob/main/vocabulary.json
+  out=tools/asr/models/vocabulary.json
