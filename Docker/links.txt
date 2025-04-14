@@ -16,4 +16,4 @@ https://huggingface.co/nlp-waseda/roberta-large-japanese/resolve/main/config.jso
 https://huggingface.co/nlp-waseda/roberta-large-japanese/resolve/main/pytorch_model.bin
   out=GPT_SoVITS/pretrained_models/roberta-large-japanese/pytorch_model.bin
 https://huggingface.co/nlp-waseda/roberta-large-japanese/resolve/main/tokenizer_config.json
-  out=GPT_SoVITS/pretrained_models/roberta-large-japanese/tokenizer.json
+  out=GPT_SoVITS/pretrained_models/roberta-large-japanese/tokenizer_config.json
