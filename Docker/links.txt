@@ -40,7 +40,7 @@ https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/uvr5_weights/onn
 
 # japanese modedels.
 https://huggingface.co/rhoninseiei/Zuikaku-80m-0.2h-e10/resolve/main/GPT_weights/zuikaku-0.1.ckpt
-  out=GPT_weights/zuikaku-0.1.pth
+  out=GPT_weights/zuikaku-0.1.ckpt
 
 https://huggingface.co/rhoninseiei/Zuikaku-80m-0.2h-e10/resolve/main/SoVITS_weights/zuikaku-0.1.pth
   out=SoVITS_weights/zuikaku-0.1.pth

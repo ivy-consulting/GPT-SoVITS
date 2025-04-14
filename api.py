@@ -651,7 +651,7 @@ def only_punc(text):
 
 splits = {"，", "。", "？", "！", ",", ".", "?", "!", "~", ":", "：", "—", "…", }
 def get_tts_wav(ref_wav_path, prompt_text, prompt_language, text, text_language, top_k= 15, top_p = 0.6, temperature = 0.6, speed = 1, inp_refs = None, sample_steps = 32, if_sr = False, spk = "default"):
-    if spk not in speaker_list:
+    if spk in speaker_list:
         import logging
         logging.info(f"Requested speaker: {spk}, Available speakers: {speaker_list.keys()}")
     
@@ -663,7 +663,7 @@ def get_tts_wav(ref_wav_path, prompt_text, prompt_language, text, text_language,
     try:
         infer_sovits = speaker_list[spk].sovits
     except Exception as e:
-        speaker_list.keys()
+        logger.error(f"the speaker lists are{speaker_list.keys()}")
         logger.error(f"Speaker {spk} not found. Please check the speaker name.")
         raise e
     vq_model = infer_sovits.vq_model
