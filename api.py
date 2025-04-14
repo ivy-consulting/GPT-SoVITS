@@ -654,8 +654,18 @@ def get_tts_wav(ref_wav_path, prompt_text, prompt_language, text, text_language,
     if spk not in speaker_list:
         import logging
         logging.info(f"Requested speaker: {spk}, Available speakers: {speaker_list.keys()}")
-        
-    infer_sovits = speaker_list[spk].sovits
+    
+    logging.info(f"the spk is , {type(spk)}")
+    
+    import warnings
+    warnings.warn(f"the spk is {spk}")
+    
+    try:
+        infer_sovits = speaker_list[spk].sovits
+    except Exception as e:
+        speaker_list.keys()
+        logger.error(f"Speaker {spk} not found. Please check the speaker name.")
+        raise e
     vq_model = infer_sovits.vq_model
     hps = infer_sovits.hps
     version = vq_model.version

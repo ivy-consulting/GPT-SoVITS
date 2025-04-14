@@ -37,3 +37,10 @@ https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/uvr5_weights/VR-
   out=tools/uvr5/uvr5_weights/VR-DeEchoNormal.pth
 https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/uvr5_weights/onnx_dereverb_By_FoxJoy/vocals.onnx
   out=tools/uvr5/uvr5_weights/onnx_dereverb_By_FoxJoy/vocals.onnx
+
+# japanese modedels.
+https://huggingface.co/rhoninseiei/Zuikaku-80m-0.2h-e10/resolve/main/GPT_weights/zuikaku-0.1.ckpt
+  out=GPT_weights/zuikaku-0.1.pth
+
+https://huggingface.co/rhoninseiei/Zuikaku-80m-0.2h-e10/resolve/main/SoVITS_weights/zuikaku-0.1.pth
+  out=SoVITS_weights/zuikaku-0.1.pth
