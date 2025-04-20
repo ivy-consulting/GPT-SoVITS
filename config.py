@@ -12,8 +12,8 @@ is_share= True if is_share_str.lower() == 'true' else False
 
 cnhubert_path = "GPT_SoVITS/pretrained_models/chinese-hubert-base"
 bert_path = "GPT_SoVITS/pretrained_models/chinese-roberta-wwm-ext-large"
-pretrained_sovits_path = "GPT_SoVITS/pretrained_models/MST-SoVITS_weights.pth"
-pretrained_gpt_path = "GPT_SoVITS/pretrained_models/MST-GPT_weights.ckpt"
+pretrained_sovits_path = "GPT_SoVITS/pretrained_models/hakua_f_e8_s2384.pth"
+pretrained_gpt_path = "GPT_SoVITS/pretrained_models/hakua_l_nh-e15.ckpt"
 
 exp_root = "logs"
 python_exec = sys.executable or "python"
