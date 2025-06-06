@@ -1232,7 +1232,7 @@ async def tts_endpoint(
             text_language = "日英混合"
         elif text_language == "en":
             text_language = "英文"
-        elif text_language == "zh":
+        elif text_language == "zh" or text_language== "all_zh":
             text_language = "中英混合"
         elif text_language == "ko":
             text_language = "韩文"
