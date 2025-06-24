@@ -1181,6 +1181,11 @@ def version_4_cli(
             path = "idols/ikka/ikko.wav"
         GPT_model_path = "GPT_SoVITS/pretrained_models/ikko-san-e45.ckpt"
         SoVITS_model_path = "GPT_SoVITS/pretrained_models/ikko-san_e15_s1305_l32.pth"
+    elif character_name in ['baacharu', 'Baacharu']:
+        path = "idols/baacharu/baacharu.wav"
+        GPT_model_path = "GPT_SoVITS/pretrained_models/baacharu-e40.ckpt"
+        SoVITS_model_path = "GPT_SoVITS/pretrained_models/baacharu_e15_s1320_l32.pth"
+        
     if (character_name == "kurari" or character_name=="Kurari") and version == "v2":
         GPT_model_path = "GPT_SoVITS/pretrained_models/kurari-hql-e40.ckpt"
         SoVITS_model_path = "GPT_SoVITS/pretrained_models/kurari-hql_e20_s1240.pth"
@@ -1247,10 +1252,12 @@ async def tts_endpoint(
         prompt_text = "朝ごはんにはトーストと卵、そしてコーヒーを飲みました。簡単だけど、朝の時間が少し幸せに感じられる瞬間でした。"
     elif character in ["Ikko", "ikko", "Ikka", "ikka"]:
         prompt_text = "せおいなげ、まじばな、らぶらぶ、あげあげ、まぼろし"
+    elif character in ['baacharu', 'Baacharu']:
+        prompt_text = "僕ねこれね初めてなんでねちょっと行きますよプルプルプルプルしてる"
     import warnings
     warnings.warn(f"the character name is {character}. ")
 
-    if character in ["Kurari", "saotome", "ikka", "Ikka", "ikko", "Ikko"]:
+    if character in ["Kurari", "saotome", "ikka", "Ikka", "ikko", "Ikko", "baacharu", "Baacharu"]:
         if text_language == "all_ja":
             text_language = "日文"
         elif text_language == "ja":
