@@ -28,6 +28,7 @@ def clean_text(text, language, version=None):
         language_module_map = {"zh": "chinese2", "ja": "japanese", "en": "english", "ko": "korean","yue":"cantonese"}
 
     if(language not in language_module_map):
+        print(f"text: {text}, language: {language}, version: {version}")
         language="en"
         text=" "
     for special_s, special_l, target_symbol in special:
