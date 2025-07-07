@@ -436,11 +436,14 @@ def get_phones_and_bert(text, language, version, final=False):
     norm_text_list = []
     for i in range(len(textlist)):
         lang = langlist[i]
-        phones, word2ph, norm_text = clean_text_inf(textlist[i], lang, version)
+        phones, word2ph, norm_text = clean_text_inf(textlist[i], lang, version) 
+        print(f"the cleaned text {textlist[i]} is", norm_text)
         bert = get_bert_inf(phones, word2ph, norm_text, lang)
+        print(f"the Bert info test {textlist[i]} is", bert.shape)
         phones_list.append(phones)
         norm_text_list.append(norm_text)
         bert_list.append(bert)
+    
     bert = torch.cat(bert_list, dim=1)
     phones = sum(phones_list, [])
     norm_text = ''.join(norm_text_list)
