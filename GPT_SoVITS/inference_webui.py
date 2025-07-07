@@ -27,7 +27,7 @@ try:
     import gradio.analytics as analytics
     analytics.version_check = lambda:None
 except:...
-version=model_version=os.environ.get("version","v2")
+version=model_version="v3"
 path_sovits_v3="GPT_SoVITS/pretrained_models/s2Gv3.pth"
 is_exist_s2gv3=os.path.exists(path_sovits_v3)
 pretrained_sovits_name=["GPT_SoVITS/pretrained_models/s2G488k.pth", "GPT_SoVITS/pretrained_models/gsv-v2final-pretrained/s2G2333k.pth",path_sovits_v3]
