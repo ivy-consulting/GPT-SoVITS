@@ -17,7 +17,10 @@ def cleaned_text_to_sequence(cleaned_text, version=None):
     Returns:
       List of integers corresponding to the symbols in the text
   '''
-  if version is None:version=os.environ.get('version', 'v2')
+  # if version is None:
+  #   versi
+  #   # version=os.environ.get('version', 'v2')
+  version = "v3"
   if version == "v1":
     phones = [_symbol_to_id_v1[symbol] for symbol in cleaned_text]
   else:
