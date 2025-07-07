@@ -22,7 +22,7 @@ def clean_text(text, language, version=None):
     if version is None:version=os.environ.get('version', 'v2')
     if version == "v1":
         symbols = symbols_v1.symbols
-        language_module_map = {"zh": "chinese", "ja": "japanese", "en": "english"}
+        language_module_map = {"zh": "chinese", "ja": "japanese", "en": "english", "ko": "korean"}
     else:
         symbols = symbols_v2.symbols
         language_module_map = {"zh": "chinese2", "ja": "japanese", "en": "english", "ko": "korean","yue":"cantonese"}
