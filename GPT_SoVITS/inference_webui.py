@@ -27,7 +27,7 @@ try:
     import gradio.analytics as analytics
     analytics.version_check = lambda:None
 except:...
-version=model_version="v3"
+version = model_version = os.environ.get("version", "v2")
 path_sovits_v3="GPT_SoVITS/pretrained_models/s2Gv3.pth"
 is_exist_s2gv3=os.path.exists(path_sovits_v3)
 pretrained_sovits_name=["GPT_SoVITS/pretrained_models/s2G488k.pth", "GPT_SoVITS/pretrained_models/gsv-v2final-pretrained/s2G2333k.pth",path_sovits_v3]
@@ -145,8 +145,10 @@ dict_language = dict_language_v1 if version =='v1' else dict_language_v2
 tokenizer = AutoTokenizer.from_pretrained(bert_path)
 bert_model = AutoModelForMaskedLM.from_pretrained(bert_path)
 if is_half == True:
+    print(f"Using half precision for BERT model on {device}")
     bert_model = bert_model.half().to(device)
 else:
+    print(f"Using full precision for BERT model on {device}")
     bert_model = bert_model.to(device)
 
 
@@ -431,6 +433,7 @@ def get_phones_and_bert(text, language, version, final=False):
             textlist.append(tmp["text"])
     print(f"Text segments: {textlist}")
     print(f"Languages: {langlist}")
+    print(f"Version: {version}")
     phones_list = []
     bert_list = []
     norm_text_list = []
@@ -522,6 +525,7 @@ def get_tts_wav(ref_wav_path, prompt_text, prompt_language, text, text_language,
         ref_free = False  # s2v3暂不支持ref_free
     else:
         if_sr = False
+    print(f"the version of the model loaded is:  {model_version}")
     t0 = ttime()
     prompt_language = dict_language[prompt_language]
     text_language = dict_language[text_language]
