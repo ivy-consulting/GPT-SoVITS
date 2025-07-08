@@ -213,8 +213,11 @@ def resample(audio_tensor, sr0):
 
 ###todo:put them to process_ckpt and modify my_save func (save sovits weights), gpt save weights use my_save in process_ckpt
 #symbol_version-model_version-if_lora_v3
+cnt  = 0
 from process_ckpt import get_sovits_version_from_path_fast,load_sovits_new
 def change_sovits_weights(sovits_path,prompt_language=None,text_language=None):
+    import warnings
+    warnings.warn("hahahhahahahhahhaha got you!")
     global vq_model, hps, version, model_version, dict_language,if_lora_v3
     print("function called change_sovits_weights with parameters:")
     version, model_version, if_lora_v3=get_sovits_version_from_path_fast(sovits_path)
