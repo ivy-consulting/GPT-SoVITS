@@ -21,7 +21,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 import os, re, sys, json
 import pdb
 import torch
-from text.LangSegmenter import LangSegmenter
+from GPT_SoVITS.text.LangSegmenter import LangSegmenter
 
 try:
     import gradio.analytics as analytics
@@ -100,9 +100,9 @@ def set_seed(seed):
     torch.cuda.manual_seed(seed)
 # set_seed(42)
 
-from AR.models.t2s_lightning_module import Text2SemanticLightningModule
-from text import cleaned_text_to_sequence
-from text.cleaner import clean_text
+from GPT_SoVITS.AR.models.t2s_lightning_module import Text2SemanticLightningModule
+from GPT_SoVITS.text import cleaned_text_to_sequence
+from GPT_SoVITS.text.cleaner import clean_text
 from time import time as ttime
 from tools.my_utils import load_audio
 from tools.i18n.i18n import I18nAuto, scan_language_list
