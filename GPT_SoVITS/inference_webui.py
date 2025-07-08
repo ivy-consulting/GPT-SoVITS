@@ -217,6 +217,7 @@ from process_ckpt import get_sovits_version_from_path_fast,load_sovits_new
 def change_sovits_weights(sovits_path,prompt_language=None,text_language=None):
     global vq_model, hps, version, model_version, dict_language,if_lora_v3
     version, model_version, if_lora_v3=get_sovits_version_from_path_fast(sovits_path)
+    print(f"Loading SoVITS model from {sovits_path} with version {version}, model_version {model_version}, if_lora_v3 {if_lora_v3}")
     # print(sovits_path,version, model_version, if_lora_v3)
     if if_lora_v3==True and is_exist_s2gv3==False:
         info= "GPT_SoVITS/pretrained_models/s2Gv3.pth" + i18n("SoVITS V3 底模缺失，无法加载相应 LoRA 权重")

@@ -12,7 +12,7 @@ def synthesize(GPT_model_path, SoVITS_model_path, ref_audio_path, ref_text, ref_
     
     # Change model weights
     change_gpt_weights(gpt_path=GPT_model_path)
-    change_sovits_weights(sovits_path=SoVITS_model_path)
+    change_sovits_weights(sovits_path=SoVITS_model_path, prompt_language=ref_language, text_language=text_language)
 
     # Synthesize audio
     synthesis_result = get_tts_wav(ref_wav_path=ref_audio_path, 

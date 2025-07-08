@@ -19,10 +19,7 @@ special = [
 
 
 def clean_text(text, language, version=None):
-    version = "v3"
-    # if version is None:
-    #     version = "v3"
-    #     # version=os.environ.get('version', 'v2')
+    print(f"from text cleaner: \n text: {text}, language: {language}, version: {version}")
     if version == "v1":
         symbols = symbols_v1.symbols
         language_module_map = {"zh": "chinese", "ja": "japanese", "en": "english"}
@@ -31,7 +28,6 @@ def clean_text(text, language, version=None):
         language_module_map = {"zh": "chinese2", "ja": "japanese", "en": "english", "ko": "korean","yue":"cantonese"}
 
     if(language not in language_module_map):
-        print(f"text: {text}, language: {language}, version: {version}")
         language="en"
         text=" "
     for special_s, special_l, target_symbol in special:
