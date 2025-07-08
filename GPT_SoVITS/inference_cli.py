@@ -16,8 +16,8 @@ def synthesize(GPT_model_path, SoVITS_model_path, ref_audio_path, ref_text, ref_
     print(f"changed gpt weights with GPT_model_path: {GPT_model_path}")
 
     print(f"about to call the change  sovits_weights function with SoVITS_model_path: {SoVITS_model_path}, ref_language: {ref_language}, text_language: {text_language}")
-    change_sovits_weights(sovits_path=SoVITS_model_path, prompt_language=ref_language, text_language=text_language)
-    print(f"changed sovits weights with SoVITS_model_path: {SoVITS_model_path}, ref_language: {ref_language}, text_language: {text_language}")
+    change_sovits_weights(sovits_path=SoVITS_model_path, prompt_language=i18n(ref_language), text_language=i18n(text_language))
+    print(f"changed sovits weights with SoVITS_model_path: {SoVITS_model_path}, ref_language: {i18n(ref_language)}, text_language: {i18n(text_language)}")
     # Synthesize audio
     synthesis_result = get_tts_wav(ref_wav_path=ref_audio_path, 
                                    prompt_text=ref_text, 
