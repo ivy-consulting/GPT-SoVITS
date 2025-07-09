@@ -30,17 +30,19 @@ except:...
 version=model_version=os.environ.get("version","v2")
 path_sovits_v3="GPT_SoVITS/pretrained_models/s2Gv3.pth"
 is_exist_s2gv3=os.path.exists(path_sovits_v3)
-pretrained_sovits_name=["GPT_SoVITS/pretrained_models/s2G488k.pth", "GPT_SoVITS/pretrained_models/gsv-v2final-pretrained/s2G2333k.pth",path_sovits_v3]
-pretrained_gpt_name=["GPT_SoVITS/pretrained_models/s1bert25hz-2kh-longer-epoch=68e-step=50232.ckpt","GPT_SoVITS/pretrained_models/gsv-v2final-pretrained/s1bert25hz-5kh-longer-epoch=12-step=369668.ckpt", "GPT_SoVITS/pretrained_models/s1v3.ckpt"]
+pretrained_sovits_name=["GPT_SoVITS/pretrained_models/gsv-v2final-pretrained/s2G2333k.pth",path_sovits_v3]
+pretrained_gpt_name=["GPT_SoVITS/pretrained_models/gsv-v2final-pretrained/s1bert25hz-5kh-longer-epoch=12-step=369668.ckpt", "GPT_SoVITS/pretrained_models/s1v3.ckpt"]
 
 
 
 _ =[[],[]]
-for i in range(3):
+for i in range(2):
     if os.path.exists(pretrained_gpt_name[i]):_[0].append(pretrained_gpt_name[i])
     if os.path.exists(pretrained_sovits_name[i]):_[-1].append(pretrained_sovits_name[i])
 pretrained_gpt_name,pretrained_sovits_name = _
 
+def test():
+    print("GPT_SoVITS/inference_cli.py is running")
 
 if os.path.exists(f"./weight.json"):
     pass
@@ -212,9 +214,11 @@ def resample(audio_tensor, sr0):
 ###todo:put them to process_ckpt and modify my_save func (save sovits weights), gpt save weights use my_save in process_ckpt
 #symbol_version-model_version-if_lora_v3
 from process_ckpt import get_sovits_version_from_path_fast,load_sovits_new
-def change_sovits_weights(sovits_path,prompt_language=None,text_language=None):
+def change_sovits_weights(sovits_path,prompt_language=None,text_language=None, cat=None):
+    print("the sovits model is updated!")
     global vq_model, hps, version, model_version, dict_language,if_lora_v3
     version, model_version, if_lora_v3=get_sovits_version_from_path_fast(sovits_path)
+    print("line 221:",sovits_path,version, model_version, if_lora_v3)
     # print(sovits_path,version, model_version, if_lora_v3)
     if if_lora_v3==True and is_exist_s2gv3==False:
         info= "GPT_SoVITS/pretrained_models/s2Gv3.pth" + i18n("SoVITS V3 底模缺失，无法加载相应 LoRA 权重")
@@ -251,7 +255,7 @@ def change_sovits_weights(sovits_path,prompt_language=None,text_language=None):
     else:
         hps.model.version = "v2"
     version=hps.model.version
-    # print("sovits版本:",hps.model.version)
+    print("sovits版本:",hps.model.version)
     if model_version!="v3":
         vq_model = SynthesizerTrn(
             hps.data.filter_length // 2 + 1,
@@ -276,6 +280,7 @@ def change_sovits_weights(sovits_path,prompt_language=None,text_language=None):
     else:
         vq_model = vq_model.to(device)
     vq_model.eval()
+
     if if_lora_v3==False:
         print("loading sovits_%s"%model_version,vq_model.load_state_dict(dict_s2["weight"], strict=False))
     else:
@@ -300,11 +305,12 @@ def change_sovits_weights(sovits_path,prompt_language=None,text_language=None):
         data["SoVITS"][version]=sovits_path
     with open("./weight.json","w")as f:f.write(json.dumps(data))
 
-
+sovits_path = "GPT_SoVITS/pretrained_models/s2G2333k.pth"
 try:next(change_sovits_weights(sovits_path))
 except:pass
 
 def change_gpt_weights(gpt_path):
+    print(f"the gpt model is updated! and the path is {gpt_path}")
     global hz, max_sec, t2s_model, config
     hz = 50
     dict_s1 = torch.load(gpt_path, map_location="cpu")
@@ -326,7 +332,7 @@ def change_gpt_weights(gpt_path):
 
 
 change_gpt_weights(gpt_path)
-os.environ["HF_ENDPOINT"]          = "https://hf-mirror.com"
+os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 import torch,soundfile
 now_dir = os.getcwd()
 import soundfile
@@ -945,10 +951,6 @@ with gr.Blocks(title="GPT-SoVITS WebUI") as app:
                 top_k = gr.Slider(minimum=1,maximum=100,step=1,label=i18n("top_k"),value=15,interactive=True, scale=1)
                 top_p = gr.Slider(minimum=0,maximum=1,step=0.05,label=i18n("top_p"),value=1,interactive=True, scale=1)
                 temperature = gr.Slider(minimum=0,maximum=1,step=0.05,label=i18n("temperature"),value=1,interactive=True, scale=1)
-            # with gr.Column():
-            #     gr.Markdown(value=i18n("手工调整音素。当音素框不为空时使用手工音素输入推理，无视目标文本框。"))
-            #     phoneme=gr.Textbox(label=i18n("音素框"), value="")
-            #     get_phoneme_button = gr.Button(i18n("目标文本转音素"), variant="primary")
         with gr.Row():
             inference_button = gr.Button(i18n("合成语音"), variant="primary", size='lg', scale=25)
             output = gr.Audio(label=i18n("输出的语音"), scale=14)
@@ -961,21 +963,6 @@ with gr.Blocks(title="GPT-SoVITS WebUI") as app:
         SoVITS_dropdown.change(change_sovits_weights, [SoVITS_dropdown,prompt_language,text_language], [prompt_language,text_language,prompt_text,prompt_language,text,text_language,sample_steps,inp_refs,ref_text_free,if_sr_Checkbox])
         GPT_dropdown.change(change_gpt_weights, [GPT_dropdown], [])
 
-        # gr.Markdown(value=i18n("文本切分工具。太长的文本合成出来效果不一定好，所以太长建议先切。合成会根据文本的换行分开合成再拼起来。"))
-        # with gr.Row():
-        #     text_inp = gr.Textbox(label=i18n("需要合成的切分前文本"), value="")
-        #     button1 = gr.Button(i18n("凑四句一切"), variant="primary")
-        #     button2 = gr.Button(i18n("凑50字一切"), variant="primary")
-        #     button3 = gr.Button(i18n("按中文句号。切"), variant="primary")
-        #     button4 = gr.Button(i18n("按英文句号.切"), variant="primary")
-        #     button5 = gr.Button(i18n("按标点符号切"), variant="primary")
-        #     text_opt = gr.Textbox(label=i18n("切分后文本"), value="")
-        #     button1.click(cut1, [text_inp], [text_opt])
-        #     button2.click(cut2, [text_inp], [text_opt])
-        #     button3.click(cut3, [text_inp], [text_opt])
-        #     button4.click(cut4, [text_inp], [text_opt])
-        #     button5.click(cut5, [text_inp], [text_opt])
-        # gr.Markdown(html_center(i18n("后续将支持转音素、手工修改音素、语音合成分步执行。")))
 
 if __name__ == '__main__':
     app.queue().launch(#concurrency_count=511, max_size=1022
