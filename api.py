@@ -1054,7 +1054,7 @@ async def tts_endpoint(
             prompt_text = "Kids are talking by the door. Dogs are sitting by the door."
     
 
-    if character in ["Kurari", "saotome", "ikka", "Ikka", "ikko", "Ikko", "Baacharu", "baacharu", "ruroro", "Ruroro"] or (character == "siratori" and shouting_type != "normal"):
+    if character in ["Kurari", "saotome", "ikka", "Ikka", "ikko", "Ikko", "Baacharu", "baacharu", "ruroro", "Ruroro"] or (character == "siratori" and (version=="v3" or shouting_type != "normal")):
         if text_language == "all_ja":
             text_language = "日文"
         elif text_language == "ja":
@@ -1077,7 +1077,9 @@ async def tts_endpoint(
         strain_effect = float(strain_effect)
         intensity = float(intensity)
 
-        print(f"Tts endpoint func: the intesty is {intensity}")
+        logger.info(f"The text is: {text} and the prompt text is {prompt_text}" )
+
+        logger.info(f"Tts endpoint func: the intesty is {intensity}")
 
         audio_buffer, sample_rate = version_4_cli(
             character_name=character,
@@ -1110,7 +1112,7 @@ async def tts_endpoint(
     inp_refs = [f"idols/{character}/refs/{file}" for file in os.listdir(f"idols/{character}/refs") if file.endswith('.wav')]
 
     
-    print(f"the base path is {refer_wav_path}")
+    logger.info(f"the base path is {refer_wav_path}")
     return handle(refer_wav_path, prompt_text, prompt_language, text, text_language, cut_punc, top_k, top_p, temperature, speed, inp_refs, sample_steps, if_sr)
 
 
