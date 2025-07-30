@@ -1047,9 +1047,9 @@ async def tts_endpoint(
         elif shouting_type == "surprised":
             prompt_text = "Kids are talking by the door. Kids are talking by the door."
         elif shouting_type == "normal":
-            prompt_text = "Kids are talking by the door. Dogs are sitting by the door."
+            prompt_text = "Dogs are sitting by the door. Dogs are sitting by the door."
         elif shouting_type == "sad":
-            prompt_text = "Kids are talking by the door. Dogs are sitting by the door."
+            prompt_text = "Kids are talking by the door. Kids are talking by the door."
         elif shouting_type == "sad-shout":
             prompt_text = "Kids are talking by the door. Dogs are sitting by the door."
     
