@@ -959,6 +959,12 @@ def version_4_cli(
             path = "idols/loude-siratori/cheering.wav"
         elif shouting_type == "joyful":
             path = "idols/loude-siratori/joyful.wav"
+        elif shouting_type == "normal":
+            path = "idols/loude-siratori/siratori-normal.wav"
+        elif shouting_type == "sad":
+            path = "idols/loude-siratori/siratori-sad-normal.wav"
+        elif shouting_type == "sad-shout":
+            path = "idols/loude-siratori/siratori-shout-sad.wav"
         else:
             path = "idols/loude-siratori/surprised.wav"
 
@@ -1031,7 +1037,7 @@ async def tts_endpoint(
         prompt_text = "せおいなげ、まじばな、らぶらぶ、あげあげ、まぼろし"
     elif character in ["Baacharu", "baacharu"]:
         prompt_text = "どーもー、世界初男性バーチャルユーチューバーのばあちゃるです"
-    elif character in ["siratori", "Siratori"] and shouting_type != "normal":
+    elif character in ["siratori", "Siratori"] and (version=="v3" or shouting_type != "normal"):
         if shouting_type == "angry":
             prompt_text = "Dogs are sitting by the door. kids are talking by the door."
         elif shouting_type == "cheering":
@@ -1040,6 +1046,12 @@ async def tts_endpoint(
             prompt_text == "Kids are talking by the door. Dogs are sitting by the door."
         elif shouting_type == "surprised":
             prompt_text = "Kids are talking by the door. Kids are talking by the door."
+        elif shouting_type == "normal":
+            prompt_text = "Kids are talking by the door. Dogs are sitting by the door."
+        elif shouting_type == "sad":
+            prompt_text = "Kids are talking by the door. Dogs are sitting by the door."
+        elif shouting_type == "sad-shout":
+            prompt_text = "Kids are talking by the door. Dogs are sitting by the door."
     
 
     if character in ["Kurari", "saotome", "ikka", "Ikka", "ikko", "Ikko", "Baacharu", "baacharu", "ruroro", "Ruroro"] or (character == "siratori" and shouting_type != "normal"):
