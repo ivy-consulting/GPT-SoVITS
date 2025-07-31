@@ -1039,18 +1039,23 @@ async def tts_endpoint(
         prompt_text = "どーもー、世界初男性バーチャルユーチューバーのばあちゃるです"
     elif character in ["siratori", "Siratori"] and (version=="v3" or shouting_type != "normal"):
         if shouting_type == "angry":
+            prompt_language = "英文"
             prompt_text = "Dogs are sitting by the door. kids are talking by the door."
         elif shouting_type == "cheering":
+            prompt_language = "英文"
             prompt_text = "Kids are talking by the door. Kids are talking by the door."
         elif shouting_type == "joyful":
+            prompt_language = "英文"
             prompt_text == "Kids are talking by the door. Dogs are sitting by the door."
         elif shouting_type == "surprised":
+            prompt_language = "英文"
             prompt_text = "Kids are talking by the door. Kids are talking by the door."
         elif shouting_type == "normal":
-            prompt_text = "Dogs are sitting by the door. Dogs are sitting by the door."
+            prompt_text = "今日は朝から曇り空で少し肌寒く、風もあって外に出ると上着が欲しくなるような天気でした"
         elif shouting_type == "sad":
             prompt_text = "私、ずっと前からあなたのことを見てきました。あなたの笑顔、優しさ、強さに。"
         elif shouting_type == "sad-shout":
+            prompt_language = "英文"
             prompt_text = "Kids are talking by the door. Dogs are sitting by the door."
     
 
