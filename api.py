@@ -943,6 +943,11 @@ def version_4_cli(
         path = "idols/ruroro/ruroro.wav"
         GPT_model_path = "GPT_SoVITS/pretrained_models/ruroro-e40.ckpt"
         SoVITS_model_path = "GPT_SoVITS/pretrained_models/s2Gv2ProPlus.pth"
+    elif character_name in ["male-ja", "Male-ja"]:
+        path = "idols/male-ja/male-ja.WAV"
+        GPT_model_path = "GPT_SoVITS/pretrained_models/s1bert25hz-5kh-longer-epoch=12-step=369668.ckpt"
+        SoVITS_model_path = "GPT_SoVITS/pretrained_models/s2Gv2ProPlus.pth"
+
     if (character_name == "kurari" or character_name=="Kurari") and version == "v2":
         GPT_model_path = "GPT_SoVITS/pretrained_models/kurari-hql-e40.ckpt"
         SoVITS_model_path = "GPT_SoVITS/pretrained_models/kurari-hql_e20_s1240.pth"
@@ -1037,6 +1042,8 @@ async def tts_endpoint(
         prompt_text = "せおいなげ、まじばな、らぶらぶ、あげあげ、まぼろし"
     elif character in ["Baacharu", "baacharu"]:
         prompt_text = "どーもー、世界初男性バーチャルユーチューバーのばあちゃるです"
+    elif character in ["male-ja", "Male-ja"]:
+        prompt_text = "この前探ったときは、途中にハンコンの隆起があったので、ついそこは行き止まりだとばかり思って入ったんですが、"
     elif character in ["siratori", "Siratori"] and (version=="v3" or shouting_type != "normal"):
         if shouting_type == "angry":
             prompt_language = "英文"
@@ -1059,7 +1066,7 @@ async def tts_endpoint(
             prompt_text = "Kids are talking by the door. Dogs are sitting by the door."
     
 
-    if character in ["Kurari", "saotome", "ikka", "Ikka", "ikko", "Ikko", "Baacharu", "baacharu", "ruroro", "Ruroro"] or (character == "siratori" and (version=="v3" or shouting_type != "normal")):
+    if character in ["Kurari", "male-ja",  "saotome", "ikka", "Ikka", "ikko", "Ikko", "Baacharu", "baacharu", "ruroro", "Ruroro"] or (character == "siratori" and (version=="v3" or shouting_type != "normal")):
         if text_language == "all_ja":
             text_language = "日文"
         elif text_language == "ja":
