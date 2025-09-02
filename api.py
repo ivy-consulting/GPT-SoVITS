@@ -945,8 +945,8 @@ def version_4_cli(
         SoVITS_model_path = "GPT_SoVITS/pretrained_models/s2Gv2ProPlus.pth"
     elif character_name in ["male-ja", "Male-ja"]:
         path = "idols/male-ja/male-ja.WAV"
-        GPT_model_path = "GPT_SoVITS/pretrained_models/s1bert25hz-5kh-longer-epoch=12-step=369668.ckpt"
-        SoVITS_model_path = "GPT_SoVITS/pretrained_models/s2Gv2ProPlus.pth"
+        GPT_model_path = "GPT_SoVITS/pretrained_models/male-ja-e40.ckpt"
+        SoVITS_model_path = "GPT_SoVITS/pretrained_models/male-ja_e20_s2180.pth"
 
     if (character_name == "kurari" or character_name=="Kurari") and version == "v2":
         GPT_model_path = "GPT_SoVITS/pretrained_models/kurari-hql-e40.ckpt"
