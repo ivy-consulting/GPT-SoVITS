@@ -870,7 +870,17 @@ change_gpt_sovits_weights(gpt_path = gpt_path, sovits_path = sovits_path)
 # --------------------------------
 # 接口部分
 # --------------------------------
+from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # or ["*"] (no credentials)
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 
 @app.post("/")
 async def tts_endpoint(request: Request):
