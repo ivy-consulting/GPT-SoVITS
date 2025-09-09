@@ -934,7 +934,7 @@ def cut4(inp):
 # contributed by https://github.com/AI-Hobbyist/GPT-SoVITS/blob/main/GPT_SoVITS/inference_webui.py
 def cut5(inp):
     inp = inp.strip("\n")
-    punds = {',', '.', ';', '?', '!', '、', '，', '。', '？', '！', ';', '：', '…'}
+    punds = {'.', ';', '?', '!', '。', '？', '！', ';', '：', '…'}
     mergeitems = []
     items = []
 
