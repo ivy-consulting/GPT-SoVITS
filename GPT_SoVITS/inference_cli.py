@@ -10,15 +10,9 @@ i18n = I18nAuto()
 def synthesize(GPT_model_path, SoVITS_model_path, ref_audio_path, ref_text, ref_language, target_text, text_language, output_path, loudness_boost=False, gain=0, normalize=False, 
                energy_scale=1.0, volume_scale=1.0, strain_effect=0.0, intensity=0):
     
-    # Change model weights
-    print("Changing model weights about to be called...")
-    test()
+    
     change_gpt_weights(gpt_path=GPT_model_path)
     change_sovits_weights(sovits_path=SoVITS_model_path, cat="category")
-
-    print("Model weights changed successfully.")
-
-    print(f"cli file inside synthesize func: the intestity is {intensity}")
 
     # Synthesize audio
     synthesis_result = get_tts_wav(ref_wav_path=ref_audio_path, 

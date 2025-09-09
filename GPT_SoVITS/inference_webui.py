@@ -516,7 +516,7 @@ def audio_sr(audio,sr):
 ##ref_wav_path+prompt_text+prompt_language+text(单个)+text_language+top_k+top_p+temperature
 # cache_tokens={}#暂未实现清理机制
 cache= {}
-def get_tts_wav(ref_wav_path, prompt_text, prompt_language, text, text_language, how_to_cut=i18n("不切"), 
+def get_tts_wav(ref_wav_path, prompt_text, prompt_language, text, text_language, how_to_cut=i18n("按标点符号切"), 
                 top_k=15, top_p=1, temperature=1, ref_free=False, speed=1, if_freeze=False, 
                 inp_refs=None, sample_steps=16, if_sr=False, pause_second=0.3, 
                 loudness_boost=False, gain=0, normalize=False, energy_scale=1.0, 
